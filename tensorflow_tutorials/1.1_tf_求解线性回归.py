@@ -1,3 +1,4 @@
+# pylint: skip-file
 # tensorflow hello world
 # run in python 3.5 
 
@@ -10,7 +11,7 @@ x_data = np.random.rand(100).astype(np.float32)
 y_data = x_data*0.1 + 0.3
 
 # 随机初始化 权重
-Weights = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+Weights = tf.Variable(tf.random.uniform([1], -1.0, 1.0))
 biases = tf.Variable(tf.zeros([1]))
 
 # 估计的y值
@@ -20,7 +21,7 @@ y = Weights*x_data + biases
 loss = tf.reduce_mean(tf.square(y-y_data))
 
 # 梯度下降优化
-optimizer = tf.train.GradientDescentOptimizer(0.5)  # 0.5 学习率
+optimizer = tf.compat.v1.train.GradientDescentOptimizer(0.5)  # 0.5 学习率
 train = optimizer.minimize(loss)
 
 """
