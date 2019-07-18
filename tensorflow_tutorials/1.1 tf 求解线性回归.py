@@ -28,12 +28,12 @@ train = optimizer.minimize(loss)
 在使用这个结构之前, 我们必须先初始化所有之前定义的Variable, 所以这一步是很重要的
 """
 # init = tf.initialize_all_variables() # tf 马上就要废弃这种写法
-init = tf.global_variables_initializer()  # 替换成这样就好
+init = tf.compat.v1.global_variables_initializer()  # 替换成这样就好
 
 
 
 #创建会话
-sess = tf.Session()
+sess = tf.compat.v1.Session()
 sess.run(init)          #  用 Session来 run 每一次 training 的数据.
 
 
